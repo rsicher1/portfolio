@@ -1,0 +1,16 @@
+{
+  "verbose": true,
+  "ignore": [
+    "node_modules",
+    ".next",
+    "actions",
+    "api",
+    "components",
+    "pages",
+    "public",
+    "server/data",
+    "styles"
+  ],
+  "watch": ["./", "server/**"],
+  "ext": "js, json"
+}
