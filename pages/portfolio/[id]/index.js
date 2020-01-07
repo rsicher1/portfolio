@@ -2,13 +2,21 @@ import React from 'react';
 import axios from 'axios';
 
 import BaseLayout from '../../../components/layouts/BaseLayout';
+import BasePage from '../../../components/shared/BasePage';
 
 const PortfolioDetail = props => {
-  const { post } = props;
+  const { post, isAuthenticated, clientAuth, loading } = props;
   return (
-    <BaseLayout title={post.title}>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
+    <BaseLayout
+      isAuthenticated={isAuthenticated}
+      clientAuth={clientAuth}
+      loading={loading}
+      title={post.title}
+    >
+      <BasePage>
+        <h1>{post.title}</h1>
+        <p>{post.body}</p>
+      </BasePage>
     </BaseLayout>
   );
 };

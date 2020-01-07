@@ -3,9 +3,10 @@ import axios from 'axios';
 import Link from 'next/link';
 
 import BaseLayout from '../../components/layouts/BaseLayout';
+import BasePage from '../../components/shared/BasePage';
 
 const Portfolio = props => {
-  const { posts } = props;
+  const { posts, isAuthenticated, clientAuth, loading } = props;
 
   const renderPosts = posts => {
     return posts.map(post => {
@@ -20,10 +21,17 @@ const Portfolio = props => {
   };
 
   return (
-    <BaseLayout title="Portfolio">
-      <h1>Portfolio</h1>
-      <div>Portfolio page</div>
-      <ul>{renderPosts(posts)}</ul>
+    <BaseLayout
+      isAuthenticated={isAuthenticated}
+      clientAuth={clientAuth}
+      loading={loading}
+      title="Portfolio"
+    >
+      <BasePage>
+        <h1>Portfolio</h1>
+        <div>Portfolio page</div>
+        <ul>{renderPosts(posts)}</ul>
+      </BasePage>
     </BaseLayout>
   );
 };

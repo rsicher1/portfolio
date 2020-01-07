@@ -1,56 +1,137 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
-import { Link as NextRoutesLink } from '../../server/routes';
+import React, { useState, useEffect } from 'react';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText,
+} from 'reactstrap';
 
-import '../../styles/main.scss';
+import CustomNavLink from './CustomNavLink';
+import Login from './Login';
+import Logout from './Logout';
 
 const Header = props => {
-  const { title } = props;
+  let { isAuthenticated, clientAuth, loading } = props;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
-    <Fragment>
-      <p>{title}</p>
-      <p className="custom-class">Styled jsx p element</p>
-      <p className="custom-class-from-file">Styled p element from file</p>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
+    <div>
+      <Navbar
+        className="port-navbar port-default absolute"
+        color="transparent"
+        dark
+        expand="md"
+      >
+        <CustomNavLink brand href="/">
+          Ross Sicherman
+        </CustomNavLink>
 
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem className="port-navbar-item">
+              <CustomNavLink href="/about">About</CustomNavLink>
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              <CustomNavLink href="/portfolio">Portfolio</CustomNavLink>
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              <CustomNavLink href="/cv">CV</CustomNavLink>
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              <CustomNavLink href="/blog">Blog</CustomNavLink>
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              <NavLink
+                className="port-navbar-link"
+                href="https://github.com/rsicher1"
+              >
+                Github
+              </NavLink>
+            </NavItem>
+            <NavItem className="port-navbar-item">
+              {clientAuth && loading && (
+                <span className="nav-link port-navbar-link">Loading...</span>
+              )}
+              {((!clientAuth && isAuthenticated) ||
+                (clientAuth && !loading && isAuthenticated)) && <Logout />}
+              {((!clientAuth && !isAuthenticated) ||
+                (clientAuth && !loading && !isAuthenticated)) && <Login />}
+            </NavItem>
 
-      <Link href="/portfolio">
-        <a>Portfolio</a>
-      </Link>
+            {/*<UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Options
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Reset</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>*/}
+          </Nav>
+          {/*<NavbarText>Simple Text</NavbarText>*/}
+        </Collapse>
+      </Navbar>
+    </div>
 
-      <Link href="/about">
-        <a>About</a>
-      </Link>
+    /*
+    return (
+      <Fragment>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
 
-      <Link href="/cv">
-        <a>CV</a>
-      </Link>
+        <Link href="/blog">
+          <a>Blog</a>
+        </Link>
 
-      <NextRoutesLink route="test" params={{ id: '2' }}>
-        <a>Test id: 2</a>
-      </NextRoutesLink>
+        <Link href="/portfolio">
+          <a>Portfolio</a>
+        </Link>
 
-      <NextRoutesLink route="/test/5">
-        <a>Test id: 5</a>
-      </NextRoutesLink>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
 
-      <style jsx>
-        {`
-          a {
-            font-size: 20px;
-          }
+        <Link href="/cv">
+          <a>CV</a>
+        </Link>
 
-          .custom-class {
-            color: red;
-          }
-        `}
-      </style>
-    </Fragment>
+        {
+        <NextRoutesLink route="test" params={{ id: '2' }}>
+          <a>Test id: 2</a>
+        </NextRoutesLink>
+
+        <NextRoutesLink route="/test/5">
+          <a>Test id: 5</a>
+        </NextRoutesLink>
+
+        <style jsx>
+          {`
+            a {
+              font-size: 20px;
+            }
+
+            .custom-class {
+              color: red;
+            }
+          `}
+        </style>
+      </Fragment>
+      */
   );
 };
 

@@ -9,7 +9,10 @@
     "pages",
     "public",
     "server/data",
-    "styles"
+    "styles",
+    "static",
+    "oauth0",
+    "helpers"
   ],
   "watch": ["./", "server/**"],
   "ext": "js, json"
