@@ -12,8 +12,7 @@ const Blog = props => {
       loading={loading}
       title="Blog"
     >
-      <BasePage>
-        <h1>Blog</h1>
+      <BasePage title="Blog">
         <div>Posts</div>
       </BasePage>
     </BaseLayout>

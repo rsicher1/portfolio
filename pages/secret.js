@@ -28,19 +28,14 @@ const Secret = props => {
       loading={loading}
       title="Secret"
     >
-      <BasePage>
-        <h1>Secret Page</h1>
-        {displaySecretData()}
-      </BasePage>
+      <BasePage title="Secret">{displaySecretData()}</BasePage>
     </BaseLayout>
   );
 };
 
 Secret.getInitialProps = async ({ req }) => {
   try {
-    const secretDataServer = await (process.browser
-      ? getSecretData()
-      : getSecretDataServer(req));
+    const secretDataServer = await getSecretDataServer(req);
     return { secretDataServer };
   } catch (err) {
     return {

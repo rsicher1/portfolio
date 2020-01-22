@@ -25,6 +25,7 @@ const Home = props => {
       loading={loading}
       title="Home"
       className="cover"
+      headerType="index"
     >
       <div className="main-section">
         <div className="background-image">

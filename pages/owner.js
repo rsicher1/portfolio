@@ -14,10 +14,7 @@ const Owner = props => {
       loading={loading}
       title="Owner"
     >
-      <BasePage>
-        <h1>Owner page</h1>
-        {user && <p>{user.email}</p>}
-      </BasePage>
+      <BasePage title="Owner">{user && <p>{user.email}</p>}</BasePage>
     </BaseLayout>
   );
 };

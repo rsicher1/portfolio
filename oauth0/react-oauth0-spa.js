@@ -61,10 +61,10 @@ export const Auth0Provider = ({
         verifiedToken = await verifyToken(tokens.idToken, decodedIdToken);
       }
 
-      const isAuthenticated = await auth0Client.isAuthenticated();
+      const isAuthenticatedTemp = await auth0Client.isAuthenticated();
 
-      setIsAuthenticated(isAuthenticated);
-      if (!verifiedToken || !isAuthenticated) {
+      setIsAuthenticated(isAuthenticatedTemp);
+      if (!verifiedToken || !isAuthenticatedTemp) {
         setIsAuthenticated(false);
         setUser(undefined);
         setTokens(undefined);

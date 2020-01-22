@@ -1,7 +1,8 @@
 @import './shared/fonts';
+@import './shared/colors';
 
 @import './index';
-
+@import './portfolio';
 @import './header';
 
 html,
@@ -15,11 +16,27 @@ body {
   position: absolute;
 }
 
-.base-page {
-  padding-top: 150px;
-  color: white;
-}
-
 .clickable {
   cursor: pointer;
+}
+
+.error {
+  font-weight: 700;
+  color: red;
+}
+
+.base-page {
+  padding: 150px 0 100px;
+  color: black;
+  background-color: $base-page-white;
+  min-height: 100vh;
+
+  .page-header {
+    .page-header-title {
+      font-weight: 700;
+      color: black;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
 }

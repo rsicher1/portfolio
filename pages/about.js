@@ -12,8 +12,7 @@ const About = props => {
       loading={loading}
       title="About"
     >
-      <BasePage className="about-page">
-        <h1>About</h1>
+      <BasePage title="About" className="about-page">
         <div>My bio</div>
       </BasePage>
     </BaseLayout>

@@ -12,8 +12,7 @@ const CV = props => {
       loading={loading}
       title="CV"
     >
-      <BasePage>
-        <h1>CV</h1>
+      <BasePage title="CV">
         <div>My CV</div>
       </BasePage>
     </BaseLayout>

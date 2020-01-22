@@ -19,7 +19,7 @@ import Login from './Login';
 import Logout from './Logout';
 
 const Header = props => {
-  let { isAuthenticated, clientAuth, loading } = props;
+  let { isAuthenticated, clientAuth, loading, className } = props;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,9 +28,7 @@ const Header = props => {
   return (
     <div>
       <Navbar
-        className="port-navbar port-default absolute"
-        color="transparent"
-        dark
+        className={`port-navbar port-nav-base absolute ${className}`}
         expand="md"
       >
         <CustomNavLink brand href="/">

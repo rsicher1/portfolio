@@ -7,7 +7,8 @@ import '../styles/main.scss';
 
 import { Auth0Provider } from '../oauth0/react-oauth0-spa';
 import { useAuth0 } from '../oauth0/react-oauth0-spa';
-import config from '../oauth0/auth_config.json';
+import config from '../config';
+const oAuthConfig = config.OAUTH0;
 import { verifyToken, getCookieServer } from '../helpers/utils';
 
 const AuthComponent = ({
@@ -30,7 +31,19 @@ const AuthComponent = ({
         isAuthenticated: isAuthenticated || isAuthenticatedServer,
         loading,
         clientAuth: clientAuth || clientAuthServer,
-        user: user || userServer,
+        user: user
+          ? {
+              ...user,
+              isSiteOwner: user['http://localhost:3000/role'].includes(
+                'siteOwner'
+              ),
+            }
+          : {
+              ...userServer,
+              isSiteOwner:
+                userServer &&
+                userServer['http://localhost:3000/role'].includes('siteOwner'),
+            },
       })}
     </Fragment>
   );
@@ -45,9 +58,9 @@ const MyApp = ({
 }) => {
   return (
     <Auth0Provider
-      domain={config.domain}
-      client_id={config.clientId}
-      redirect_uri={config.redirect_uri}
+      domain={oAuthConfig.DOMAIN}
+      client_id={oAuthConfig.CLIENT_ID}
+      redirect_uri={oAuthConfig.REDIRECT_URI}
       onRedirectCallback={() => {}}
     >
       <AuthComponent
@@ -97,7 +110,6 @@ MyApp.getInitialProps = async appContext => {
   }
 
   const appProps = await App.getInitialProps(appContext);
-
   return {
     ...appProps,
     clientAuthServer,

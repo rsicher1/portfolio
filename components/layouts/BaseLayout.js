@@ -4,6 +4,7 @@ import Header from '../shared/Header';
 
 const BaseLayout = props => {
   const { title, className, isAuthenticated, clientAuth, loading } = props;
+  const headerType = props.headerType || 'default';
 
   return (
     <div className="layout-container">
@@ -12,6 +13,8 @@ const BaseLayout = props => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header
+        className={`port-nav-${headerType}`}
+        headerType={headerType}
         loading={loading}
         clientAuth={clientAuth}
         isAuthenticated={isAuthenticated}
