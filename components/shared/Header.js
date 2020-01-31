@@ -30,6 +30,7 @@ const Header = props => {
       <Navbar
         className={`port-navbar port-nav-base absolute ${className}`}
         expand="md"
+        dark
       >
         <CustomNavLink brand href="/">
           Ross Sicherman
@@ -37,7 +38,8 @@ const Header = props => {
 
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="mr-auto" navbar></Nav>
+          <Nav navbar>
             <NavItem className="port-navbar-item">
               <CustomNavLink href="/about">About</CustomNavLink>
             </NavItem>

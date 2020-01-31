@@ -10,7 +10,16 @@ const BaseLayout = props => {
     <div className="layout-container">
       <Head>
         <title>{title}</title>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+
         <link rel="icon" href="/favicon.ico" />
+        <script
+          src="https://kit.fontawesome.com/f41c6dcd85.js"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <Header
         className={`port-nav-${headerType}`}

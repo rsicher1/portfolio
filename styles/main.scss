@@ -1,9 +1,13 @@
-@import './shared/fonts';
-@import './shared/colors';
+@import './abstracts/mixins';
 
-@import './index';
-@import './portfolio';
-@import './header';
+@import './base/fonts';
+@import './base/colors';
+
+@import './layout/index';
+@import './layout/portfolio';
+@import './layout/blog';
+
+@import './components/header';
 
 html,
 body {

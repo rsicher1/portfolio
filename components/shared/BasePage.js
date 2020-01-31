@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 
 const BasePage = props => {
-  const { className, title } = props;
+  const { className, title, containerClass } = props;
 
   return (
     <div className={`base-page ${className}`}>
-      <Container>
+      <Container className={containerClass}>
         {' '}
         {title && (
           <div className="page-header">
@@ -22,6 +22,7 @@ const BasePage = props => {
 
 BasePage.defaultProps = {
   className: '',
+  containerClass: '',
 };
 
 BasePage.propTypes = {
