@@ -21,7 +21,7 @@
     "bootstrap": "^4.4.1",
     "emotion": "^10.0.27",
     "express": "^4.17.1",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "formik": "^2.1.1",
     "immutable": "^4.0.0-rc.12",
     "is-hotkey": "^0.1.6",
